@@ -1,34 +1,27 @@
 <template>
   <div id="app">
     <ActualGrid ref="grid" />
-    <button @click="executeCommands">Mover al destino</button> <!-- Agregado para mover el rover -->
   </div>
 </template>
 
 <script>
-import ActualGrid from './components/Actual-grid.vue'; // Asegúrate de que la ruta sea correcta
+import ActualGrid from './components/Actual-grid.vue'; // Verifica que la ruta sea correcta
 
 export default {
   components: {
     ActualGrid,
   },
-  data() {
-    return {
-      commands: '', // Aquí se puede agregar la lógica para la entrada de comando si lo deseas
-    };
-  },
-  methods: {
-    executeCommands() {
-      if (this.$refs.grid) {
-        this.$refs.grid.moveToDestination(); // Cambia a usar el método correcto
-      } else {
-        console.error("El componente 'grid' no está referenciado correctamente.");
-      }
-    },
-  },
 };
 </script>
 
 <style>
-/* Estilos generales para el App.vue si es necesario */
+/* Estilos generales para App.vue, si es necesario */
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif; /* Fuente general */
+  -webkit-font-smoothing: antialiased; /* Suavizado de texto */
+  -moz-osx-font-smoothing: grayscale; /* Suavizado de texto */
+  text-align: center; /* Alineación de texto */
+  color: #2c3e50; /* Color del texto */
+  margin-top: 60px; /* Espacio superior */
+}
 </style>
