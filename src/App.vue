@@ -1,27 +1,34 @@
 <template>
   <div id="app">
-    <ActualGrid ref="grid" />
+    <WelcomeLogin v-if="!isLoggedIn" @login-success="isLoggedIn = true" />
+    <ActualGrid v-else ref="grid" />
   </div>
 </template>
 
 <script>
-import ActualGrid from './components/Actual-grid.vue'; // Verifica que la ruta sea correcta
+import ActualGrid from './components/Actual-grid.vue'; // Importar el componente de la cuadrícula
+import WelcomeLogin from './components/WelcomeLogin.vue'; // Asegúrate de la ruta correcta
 
 export default {
   components: {
     ActualGrid,
+    WelcomeLogin, // Registra el nuevo componente
+  },
+  data() {
+    return {
+      isLoggedIn: false, // Estado de autenticación
+    };
   },
 };
 </script>
 
 <style>
-/* Estilos generales para App.vue, si es necesario */
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif; /* Fuente general */
-  -webkit-font-smoothing: antialiased; /* Suavizado de texto */
-  -moz-osx-font-smoothing: grayscale; /* Suavizado de texto */
-  text-align: center; /* Alineación de texto */
-  color: #2c3e50; /* Color del texto */
-  margin-top: 60px; /* Espacio superior */
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

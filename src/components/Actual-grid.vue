@@ -5,7 +5,12 @@
     <div class="grid">
       <img
         class="rover"
-        :style="{ top: (y * 16.67) + 'px', left: (x * 16.67) + 'px', transition: 'top 0.2s, left 0.2s' }"
+        :style="{ 
+          top: (y * 16.67) + 'px',
+          left: (x * 16.67) + 'px',
+          transition: 'top 0.2s, left 0.2s, transform 0.2s',
+          transform: `rotate(${direction * 90}deg)` /* Rotar según dirección */
+        }"
         src="@/assets/mars_rover.png"
         alt="Mars Rover"
       />
@@ -93,27 +98,6 @@ export default {
 </script>
 
 <style>
-.grid {
-  position: relative;
-  width: 500px; /* Tamaño total del tablero */
-  height: 500px;
-  display: grid;
-  grid-template-columns: repeat(30, 1fr); /* 30 columnas */
-  grid-template-rows: repeat(30, 1fr); /* 30 filas */
-  border: 1px solid black; /* Borde del tablero */
-  background: linear-gradient(to right, gray 1px, transparent 1px),
-              linear-gradient(to bottom, gray 1px, transparent 1px);
-  background-size: 16.67px 16.67px; /* Tamaño de las líneas de la cuadrícula */
-}
-
-.rover {
-  position: absolute;
-  width: 16.67px; /* Tamaño del rover */
-  height: 16.67px; /* Tamaño del rover */
-  object-fit: contain; /* Asegura que la imagen mantenga su proporción */
-  transition: top 0.2s, left 0.2s; /* Animación suave para el movimiento */
-}
-
 .initial-coordinates {
   margin-bottom: 20px; /* Espacio entre el campo de entrada y el tablero */
   font-family: Arial, sans-serif; /* Fuente del texto */
@@ -142,6 +126,27 @@ export default {
 
 .initial-coordinates button:hover {
   background-color: #45a049; /* Color de fondo del botón al pasar el mouse */
+}
+
+.grid {
+  position: relative;
+  width: 500px; /* Tamaño total del tablero */
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(30, 1fr); /* 30 columnas */
+  grid-template-rows: repeat(30, 1fr); /* 30 filas */
+  border: 1px solid black; /* Borde del tablero */
+  background: linear-gradient(to right, gray 1px, transparent 1px),
+              linear-gradient(to bottom, gray 1px, transparent 1px);
+  background-size: 16.67px 16.67px; /* Tamaño de las líneas de la cuadrícula */
+}
+
+.rover {
+  position: absolute;
+  width: 16.67px; /* Tamaño del rover */
+  height: 16.67px; /* Tamaño del rover */
+  object-fit: contain; /* Asegura que la imagen mantenga su proporción */
+  transition: top 0.2s, left 0.2s, transform 0.2s; /* Animación suave para el movimiento y rotación */
 }
 
 .coordinates {
