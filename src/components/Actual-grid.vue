@@ -1,16 +1,14 @@
 <template>
   <div>
-    <InitialCoordinates @set-position="setInitialPosition" />
+    <div class="controls">
+      <InitialCoordinates @set-position="setInitialPosition" />
+      <CommandInput @execute-commands="executeCommands" />
+    </div>
 
     <div class="grid">
       <img
         class="rover"
-        :style="{ 
-          top: (y * 16.67) + 'px',
-          left: (x * 16.67) + 'px',
-          transition: 'top 0.2s, left 0.2s, transform 0.2s',
-          transform: `rotate(${direction * 90}deg)` /* Rotar según dirección */
-        }"
+        :style="{ top: (y * 16.67) + 'px', left: (x * 16.67) + 'px', transition: 'top 0.2s, left 0.2s' }"
         src="@/assets/mars_rover.png"
         alt="Mars Rover"
       />
@@ -19,8 +17,6 @@
     <div class="coordinates">
       <p>Posición del Rover: ({{ x }}, {{ y }})</p>
     </div>
-
-    <CommandInput @execute-commands="executeCommands" />
   </div>
 </template>
 
@@ -35,14 +31,14 @@ export default {
   },
   data() {
     return {
-      x: 15,      // posición inicial en x (centro)
+      x: 30,      // posición inicial en x (centro)
       y: 15,      // posición inicial en y (centro)
       direction: 0, // dirección inicial (0=N, 1=E, 2=S, 3=O)
     };
   },
   methods: {
     setInitialPosition(coords) {
-      if (coords.x >= 0 && coords.x <= 29 && coords.y >= 0 && coords.y <= 29) {
+      if (coords.x >= 0 && coords.x <= 60 && coords.y >= 0 && coords.y <= 29) {
         this.x = coords.x; // Establecer la posición inicial del rover
         this.y = coords.y;
       } else {
@@ -73,7 +69,7 @@ export default {
           if (this.y > 0) this.y--; // Mover hacia arriba
           break;
         case 1: // Este
-          if (this.x < 29) this.x++; // Mover hacia la derecha
+          if (this.x < 60) this.x++; // Mover hacia la derecha
           break;
         case 2: // Sur
           if (this.y < 29) this.y++; // Mover hacia abajo
@@ -98,6 +94,12 @@ export default {
 </script>
 
 <style>
+.controls {
+  display: flex; /* Usa Flexbox para alinear los módulos uno al lado del otro */
+  justify-content: space-between; /* Espacio entre los controles */
+  margin: 20px; /* Espacio entre el contenedor de controles y el tablero */
+}
+
 .initial-coordinates {
   margin-bottom: 20px; /* Espacio entre el campo de entrada y el tablero */
   font-family: Arial, sans-serif; /* Fuente del texto */
@@ -130,23 +132,22 @@ export default {
 
 .grid {
   position: relative;
-  width: 500px; /* Tamaño total del tablero */
-  height: 500px;
+  width: 100%; /* Hacer que la cuadrícula ocupe el ancho total de la pantalla */
+  height: 90vh; /* Ajustar la altura como un porcentaje de la ventana */
   display: grid;
-  grid-template-columns: repeat(30, 1fr); /* 30 columnas */
-  grid-template-rows: repeat(30, 1fr); /* 30 filas */
+  grid-template-columns: repeat(20, 1fr); /* 20 columnas */
+  grid-template-rows: repeat(20, 1fr); /* 20 filas */
   border: 1px solid black; /* Borde del tablero */
-  background: linear-gradient(to right, gray 1px, transparent 1px),
-              linear-gradient(to bottom, gray 1px, transparent 1px);
-  background-size: 16.67px 16.67px; /* Tamaño de las líneas de la cuadrícula */
+  background: url('@/assets/mars.png') no-repeat center center; /* Imagen de fondo */
+  background-size: cover; /* Ajusta la imagen al tamaño de la cuadrícula */
 }
 
 .rover {
   position: absolute;
-  width: 16.67px; /* Tamaño del rover */
-  height: 16.67px; /* Tamaño del rover */
+  width: 45px; /* Tamaño del rover acorde al nuevo tamaño de cuadrícula */
+  height: 45px; /* Tamaño del rover acorde al nuevo tamaño de cuadrícula */
   object-fit: contain; /* Asegura que la imagen mantenga su proporción */
-  transition: top 0.2s, left 0.2s, transform 0.2s; /* Animación suave para el movimiento y rotación */
+  transition: top 0.2s, left 0.2s; /* Animación suave para el movimiento */
 }
 
 .coordinates {

@@ -1,16 +1,21 @@
 <template>
   <div class="login-container">
-    <h2>Iniciar Sesión</h2>
-    <form @submit.prevent="handleLogin">
-      <label for="username">Usuario:</label>
-      <input type="text" id="username" v-model="username" required />
+    <div class="left-box">
+    </div>
+    <div class="right-box">
+      <img src="@/assets/marsLogo.png" alt="Mars Logo" class="logo" />
+      <h2>Iniciar Sesión</h2>
+      <form @submit.prevent="handleLogin">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" v-model="username" required />
 
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" v-model="password" required />
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" v-model="password" required />
 
-      <button type="submit">Ingresar</button>
-    </form>
-    <p v-if="errorMsg" class="error">{{ errorMsg }}</p>
+        <button type="submit">Ingresar</button>
+      </form>
+      <p v-if="errorMsg" class="error">{{ errorMsg }}</p>
+    </div>
   </div>
 </template>
 
@@ -26,7 +31,7 @@ export default {
   methods: {
     handleLogin() {
       // Verificar el usuario y la contraseña
-      if (this.username === 'admin' && this.password === 'password') {
+      if (this.username === '1' && this.password === '1') {
         // Emitir el evento de éxito al iniciar sesión
         this.$emit('login-success'); 
       } else {
@@ -39,38 +44,28 @@ export default {
 
 <style>
 .login-container {
-  margin-top: 50px;
-  font-family: Arial, sans-serif;
+  display: flex; /* Uso de Flexbox para las cajas */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
 }
 
-.login-container h2 {
-  margin-bottom: 20px;
+.left-box {
+  flex: 1; /* Tamaño flexible para la caja izquierda */
+  background-color: #ff610c; /* Color de fondo para la caja izquierda */
 }
 
-.login-container label {
-  display: block;
-  margin: 5px 0;
+.right-box {
+  flex: 1; /* Tamaño flexible para la caja derecha */
+  display: flex;
+  flex-direction: column; /* Alinear elementos verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+  justify-content: center; /* Centrar verticalmente */
+  background-color: #ffffff; /* Color de fondo para la caja derecha */
 }
 
-.login-container input {
-  padding: 5px;
-  width: 200px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.login-container button {
-  padding: 5px 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.login-container button:hover {
-  background-color: #45a049;
+.logo {
+  width: 60%; /* Ajustar el tamaño del logo */
+  max-width: 300px; /* Tamaño máximo del logo */
+  margin-bottom: 20px; /* Margen inferior del logo */
 }
 
 .error {

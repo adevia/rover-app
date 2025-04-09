@@ -24,7 +24,6 @@
   
   <style>
   .command-input {
-    margin-top: 20px; /* Espacio entre secciones */
     font-family: Arial, sans-serif; /* Fuente del texto */
   }
   

@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import ActualGrid from './components/Actual-grid.vue'; // Importar el componente de la cuadrícula
-import WelcomeLogin from './components/WelcomeLogin.vue'; // Asegúrate de la ruta correcta
+import ActualGrid from './components/Actual-grid.vue'; 
+import WelcomeLogin from './components/WelcomeLogin.vue'; 
 
 export default {
   components: {
     ActualGrid,
-    WelcomeLogin, // Registra el nuevo componente
+    WelcomeLogin,
   },
   data() {
     return {
@@ -24,11 +24,16 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: Avenir, Helvetica, Arial, sans-serif; /* Fuente general */
+  -webkit-font-smoothing: antialiased; /* Suavizado de texto */
+  -moz-osx-font-smoothing: grayscale; /* Suavizado de texto */
+  text-align: center; /* Alineación de texto */
+  color: #2c3e50; /* Color del texto */
+  margin: 0; /* Quitar margen */
+}
+
+/* Estilo para eliminar margen del body */
+body {
+  margin: 0; /* Eliminamos el margen del body */
 }
 </style>
