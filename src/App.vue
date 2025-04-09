@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <ActualGrid ref="grid" />
+    <button @click="executeCommands">Mover al destino</button> <!-- Agregado para mover el rover -->
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ActualGrid from './components/Actual-grid.vue'; // Asegúrate de que la ruta sea correcta
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    ActualGrid,
+  },
+  data() {
+    return {
+      commands: '', // Aquí se puede agregar la lógica para la entrada de comando si lo deseas
+    };
+  },
+  methods: {
+    executeCommands() {
+      if (this.$refs.grid) {
+        this.$refs.grid.moveToDestination(); // Cambia a usar el método correcto
+      } else {
+        console.error("El componente 'grid' no está referenciado correctamente.");
+      }
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Estilos generales para el App.vue si es necesario */
 </style>
