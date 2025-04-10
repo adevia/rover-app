@@ -7,7 +7,7 @@
       <img src="@/assets/marsLogo.png" alt="Mars Logo" class="logo" />
       <h2>Log In</h2>
       <form @submit.prevent="handleLogin">
-        <label for="username">Credencial</label>
+        <label for="username">Credential</label>
         <input type="text" id="username" v-model="username" required />
 
         <label for="password">Password</label>
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     handleLogin() {
-      if (this.username === '1' && this.password === '1') {
+      if (this.username === 'housfy' && this.password === 'frontend') {
         this.$emit('login-success'); 
       } else {
         this.errorMsg = 'Usuario o contraseña incorrectos.';
