@@ -31,9 +31,7 @@ export default {
   },
   methods: {
     handleLogin() {
-      // Verificar el usuario y la contraseña
       if (this.username === '1' && this.password === '1') {
-        // Emitir el evento de éxito al iniciar sesión
         this.$emit('login-success'); 
       } else {
         this.errorMsg = 'Usuario o contraseña incorrectos.';
@@ -45,28 +43,28 @@ export default {
 
 <style>
 .login-container {
-  display: flex; /* Uso de Flexbox para las cajas */
-  height: 100vh; /* Ocupa toda la altura de la ventana */
+  display: flex;
+  height: 100vh;
 }
 
 .left-box {
-  flex: 1; /* Tamaño flexible para la caja izquierda */
-  background-color: #ff610c; /* Color de fondo para la caja izquierda */
+  flex: 1;
+  background-color: #ff610c;
 }
 
 .right-box {
-  flex: 1; /* Tamaño flexible para la caja derecha */
+  flex: 1;
   display: flex;
-  flex-direction: column; /* Alinear elementos verticalmente */
-  align-items: center; /* Centrar horizontalmente */
-  justify-content: center; /* Centrar verticalmente */
-  background-color: #ffffff; /* Color de fondo para la caja derecha */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
 }
 
 .logo {
-  width: 60%; /* Ajustar el tamaño del logo */
-  max-width: 300px; /* Tamaño máximo del logo */
-  margin-bottom: 20px; /* Margen inferior del logo */
+  width: 60%;
+  max-width: 300px;
+  margin-bottom: 20px;
 }
 
 .bottom-left-image {
@@ -92,14 +90,14 @@ input[type="password"] {
     padding: 10px;
     margin-bottom: 20px;
     border: none;
-    border-bottom: 2px solid #ff610c; /* Borde inferior */
+    border-bottom: 2px solid #ff610c;
     outline: none;
     transition: border-color 0.3s;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-    border-bottom: 2px solid #ff610c; /* Color del borde al enfocar */
+    border-bottom: 2px solid #ff610c;
 }
 
 button {
@@ -114,10 +112,10 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Color del botón al pasar el ratón */
+    background-color: #0056b3;
 }
 
 .error {
-  color: red; /* Color para el mensaje de error */
+  color: red;
 }
 </style>

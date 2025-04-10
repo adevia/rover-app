@@ -1,45 +1,44 @@
 <template>
     <div class="initial-coordinates">
-      <label for="startX">Coordenada X inicial (0-29):</label>
+      <label for="startX">Start point in X (0-99):</label>
       <input
         type="number"
         id="startX"
         v-model.number="startX"
-        :max="29"
+        :max="99"
         :min="0"
       />
-      <label for="startY">Coordenada Y inicial (0-29):</label>
+      <label for="startY">Start point in Y (0-34):</label>
       <input
         type="number"
         id="startY"
         v-model.number="startY"
-        :max="29"
+        :max="35"
         :min="0"
       />
       <button @click="setInitialPosition">Establecer posición inicial</button>
     </div>
   </template>
   
-  <script>
+ <script>
   export default {
     data() {
       return {
-        startX: 15, // Valor por defecto para coordenadas iniciales
-        startY: 15, // Valor por defecto para coordenadas iniciales
+        startX: 50,
+        startY: 17,
       };
     },
     methods: {
       setInitialPosition() {
-        // Emitir el evento con las coordenadas iniciales
         this.$emit('set-position', { x: this.startX, y: this.startY });
       },
     },
   };
-  </script>
+</script>
   
-  <style>
+<style>
   .initial-coordinates {
-    margin-bottom: 20px; /* Espacio entre el campo de entrada y el tablero */
+    margin-bottom: 20px;
     background-color: #043f4b;
 
     label {
@@ -48,27 +47,27 @@
   }
   
   .initial-coordinates label {
-    margin-right: 10px; /* Espaciado entre la etiqueta y el input */
+    margin-right: 10px;
   }
   
   .initial-coordinates input {
-    width: 50px; /* Ancho del campo de entrada */
-    margin-right: 10px; /* Espaciado entre campos */
-    padding: 5px; /* Espaciado interno */
-    border: 1px solid #ccc; /* Borde del campo */
-    border-radius: 4px; /* Bordes redondeados */
+    width: 50px;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
   
   .initial-coordinates button {
-    padding: 5px 10px; /* Espaciado interno del botón */
-    background-color: #4CAF50; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
   
   .initial-coordinates button:hover {
-    background-color: #45a049; /* Color de fondo del botón al pasar el mouse */
+    background-color: #45a049;
   }
-  </style>
+</style>

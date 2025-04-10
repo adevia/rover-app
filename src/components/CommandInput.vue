@@ -10,12 +10,11 @@
   export default {
     data() {
       return {
-        commands: '', // Campo para ingresar comandos
+        commands: '',
       };
     },
     methods: {
       executeCommands() {
-        // Emitir el evento con los comandos ingresados
         this.$emit('execute-commands', this.commands);
       },
     },
@@ -24,29 +23,29 @@
   
   <style>
   .command-input {
-    font-family: Arial, sans-serif; /* Fuente del texto */
+    font-family: Arial, sans-serif;
   }
   
   .command-input label {
-    margin-right: 10px; /* Espaciado entre la etiqueta y el input */
+    margin-right: 10px;
   }
   
   .command-input input {
-    padding: 5px; /* Espaciado interno */
-    border: 1px solid #ccc; /* Borde del campo */
-    border-radius: 4px; /* Bordes redondeados */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
   
   .command-input button {
-    padding: 5px 10px; /* Espaciado interno del botón */
-    background-color: #007BFF; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
   
   .command-input button:hover {
-    background-color: #0056b3; /* Color de fondo del botón al pasar el mouse */
+    background-color: #0056b3;
   }
   </style>
