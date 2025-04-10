@@ -5,10 +5,31 @@
     <div class="grid">
       <img
         class="rover"
-        :style="{ top: (y * 16.67) + 'px', left: (x * 16.67) + 'px', transition: 'top 0.2s, left 0.2s' }"
+        :style="{
+          top: (y * 16.67) + 'px',
+          left: (x * 16.67) + 'px',
+          transition: 'top 0.2s, left 0.2s',
+          transform: direction === 0 ? 'rotate(0deg)' :
+                    direction === 1 ? 'rotate(90deg)' :
+                    direction === 2 ? 'rotate(180deg)' :
+                    direction === 3 ? 'rotate(270deg)' : ''
+        }"
         src="@/assets/mars_rover.png"
         alt="Mars Rover"
       />
+
+      <img
+        class="image-setter"
+        :style="{
+          top: (imagePosition.y * 16.67) + 'px',
+          left: (imagePosition.x * 16.67) + 'px',
+          display: imageVisible ? 'block' : 'none',
+          transition: 'top 0.2s, left 0.2s'
+        }"
+        src="@/assets/background.png"
+        alt="Background Image"
+      />
+      
     </div>
 
     <div class="coordinates">
@@ -17,6 +38,7 @@
 
     <div class="controls">
       <InitialCoordinates @set-position="setInitialPosition" />
+      <BackgroundImageSetter @set-image="setImagePosition" />
       <CommandInput @execute-commands="executeCommands" />
     </div>
   </div>
@@ -26,20 +48,24 @@
 import InitialCoordinates from './InitialCoordinates.vue'; 
 import CommandInput from './CommandInput.vue'; 
 import Logo from './Logo-main.vue';
+import BackgroundImageSetter from './BackgroundImageSetter.vue';
 
 export default {
   components: {
     InitialCoordinates,
     CommandInput,
     Logo,
+    BackgroundImageSetter,
   },
   data() {
-    return {
-      x: 50,
-      y: 17,
-      direction: 0,
-    };
-  },
+  return {
+    x: 50,
+    y: 17,
+    direction: 0,
+    imageVisible: false,
+    imagePosition: { x: 0, y: 0 },
+  };
+},
   methods: {
     setInitialPosition(coords) {
       if (coords.x >= 0 && coords.x <= 99 && coords.y >= 0 && coords.y <= 34) {
@@ -92,6 +118,11 @@ export default {
       // Girar a la izquierda
       this.direction = (this.direction + 3) % 4; // Cambiar dirección
     },
+
+    setImagePosition(coords) {
+  this.imagePosition = coords; 
+  this.imageVisible = true; // Muestra la imagen
+},
   },
 };
 </script>
@@ -122,22 +153,22 @@ export default {
   background-size: cover;
 }
 
-.rover {
+.rover, .image-setter {
   position: absolute;
-  width: 100px;
+  width: 100px; 
   height: 100px;
   object-fit: contain;
-  transition: top 0.2s, left 0.2s;
+  transition: top 0.2s, left 0.2s, transform 0.2s;
+  transform-origin: center;
 }
 
 .coordinates {
-  margin-top: 20px;
   font-size: 2vh;
 }
 
 .controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 20px;
   flex: 1;
 }

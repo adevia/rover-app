@@ -22,9 +22,6 @@
   </script>
   
   <style>
-  .command-input {
-    font-family: Arial, sans-serif;
-  }
   
   .command-input label {
     margin-right: 10px;
@@ -32,17 +29,16 @@
   
   .command-input input {
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid!important;
     border-radius: 4px;
   }
   
   .command-input button {
     padding: 5px 10px;
-    background-color: #007BFF;
-    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px;
   }
   
   .command-input button:hover {
