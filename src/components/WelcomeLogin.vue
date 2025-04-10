@@ -1,18 +1,19 @@
 <template>
   <div class="login-container">
     <div class="left-box">
+      <img src="@/assets/roverMm.png" alt="Rover" class="bottom-left-image">
     </div>
     <div class="right-box">
       <img src="@/assets/marsLogo.png" alt="Mars Logo" class="logo" />
-      <h2>Iniciar Sesión</h2>
+      <h2>Log In</h2>
       <form @submit.prevent="handleLogin">
-        <label for="username">Usuario:</label>
+        <label for="username">Credencial</label>
         <input type="text" id="username" v-model="username" required />
 
-        <label for="password">Contraseña:</label>
+        <label for="password">Password</label>
         <input type="password" id="password" v-model="password" required />
 
-        <button type="submit">Ingresar</button>
+        <button type="submit">Activate</button>
       </form>
       <p v-if="errorMsg" class="error">{{ errorMsg }}</p>
     </div>
@@ -66,6 +67,54 @@ export default {
   width: 60%; /* Ajustar el tamaño del logo */
   max-width: 300px; /* Tamaño máximo del logo */
   margin-bottom: 20px; /* Margen inferior del logo */
+}
+
+.bottom-left-image {
+  max-width: 40%;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #ff610c; /* Borde inferior */
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #ff610c; /* Color del borde al enfocar */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff610c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Color del botón al pasar el ratón */
 }
 
 .error {

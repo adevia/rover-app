@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      isLoggedIn: false, // Estado de autenticación
+      isLoggedIn: false,
     };
   },
 };
@@ -24,16 +24,15 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif; /* Fuente general */
-  -webkit-font-smoothing: antialiased; /* Suavizado de texto */
-  -moz-osx-font-smoothing: grayscale; /* Suavizado de texto */
-  text-align: center; /* Alineación de texto */
-  color: #2c3e50; /* Color del texto */
-  margin: 0; /* Quitar margen */
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #18738f;
+  margin: 0;
 }
 
-/* Estilo para eliminar margen del body */
 body {
-  margin: 0; /* Eliminamos el margen del body */
+  margin: 0;
 }
 </style>

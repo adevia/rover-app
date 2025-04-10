@@ -40,7 +40,11 @@
   <style>
   .initial-coordinates {
     margin-bottom: 20px; /* Espacio entre el campo de entrada y el tablero */
-    font-family: Arial, sans-serif; /* Fuente del texto */
+    background-color: #043f4b;
+
+    label {
+        color: white;
+    }
   }
   
   .initial-coordinates label {
