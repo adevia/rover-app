@@ -29,11 +29,23 @@
         src="@/assets/background.png"
         alt="Background Image"
       />
+
+      <div 
+        v-for="(obstacle, index) in obstacles" 
+        :key="index" 
+        class="obstacle"
+        :style="{
+          top: (obstacle.y * 16.67) + 'px',
+          left: (obstacle.x * 16.67) + 'px',
+          position: 'absolute',
+          display: obstacle.visible ? 'block' : 'none'
+        }"
+      ></div>
       
     </div>
 
     <div class="coordinates">
-      <p>ROVER Actual Position is ({{ x }}, {{ y }})</p>
+      <p><mark>ROVER Actual Position is ({{ x }}, {{ y }})</mark></p>
     </div>
 
     <div class="controls">
@@ -64,6 +76,14 @@ export default {
     direction: 0,
     imageVisible: false,
     imagePosition: { x: 0, y: 0 },
+    obstacles: [
+      { x: 10, y: 4, visible: false },
+      { x: 20, y: 20, visible: false},
+      { x: 34, y: 6, visible: false },
+      { x: 50, y: 20, visible: false },
+      { x: 60, y: 16, visible: false },
+      { x: 80, y: 2, visible: false },
+    ],
   };
 },
   methods: {
@@ -93,36 +113,55 @@ export default {
     },
 
     moveForward() {
+      let newX = this.x;
+      let newY = this.y;
+
       switch (this.direction) {
         case 0: // Norte
-          if (this.y > 0) this.y--; // Mover hacia arriba
+          newY--; 
           break;
         case 1: // Este
-          if (this.x < 84) this.x++; // Mover hacia la derecha
+          newX++; 
           break;
         case 2: // Sur
-          if (this.y < 24) this.y++; // Mover hacia abajo
+          newY++; 
           break;
         case 3: // Oeste
-          if (this.x > 0) this.x--; // Mover hacia la izquierda
+          newX--; 
           break;
+      }
+
+      // Comprobar si la nueva posición está dentro de los límites
+      if (this.isInBounds(newX, newY)) {
+        this.x = newX;
+        this.y = newY;
+
+        // Comprobar si hay un obstáculo en la nueva posición
+        const obstacle = this.obstacles.find(o => o.x === newX && o.y === newY);
+        if (obstacle) {
+          obstacle.visible = true; // Hacer visible el obstáculo
+        }
+      } else {
+        alert("Movimiento fuera de límites.");
       }
     },
 
+    isInBounds(x, y) {
+      return x >= 0 && x <= 84 && y >= 0 && y <= 24;
+    },
+
     turnRight() {
-      // Girar a la derecha
-      this.direction = (this.direction + 1) % 4; // Cambiar dirección
+      this.direction = (this.direction + 1) % 4; 
     },
 
     turnLeft() {
-      // Girar a la izquierda
-      this.direction = (this.direction + 3) % 4; // Cambiar dirección
+      this.direction = (this.direction + 3) % 4; 
     },
 
     setImagePosition(coords) {
-  this.imagePosition = coords; 
-  this.imageVisible = true; // Muestra la imagen
-},
+      this.imagePosition = coords; 
+      this.imageVisible = true; 
+    },
   },
 };
 </script>
@@ -159,6 +198,14 @@ export default {
   object-fit: contain;
   transition: top 0.2s, left 0.2s, transform 0.2s;
   transform-origin: center;
+}
+
+.obstacle {
+  width: 100px; 
+  height: 100px; 
+  background-color: red; /* Color para distinguir los obstáculos */
+  opacity: 0.7; /* Permitir ver el fondo ligeramente */
+  border-radius: 50%; /* Forma circular */
 }
 
 .coordinates {
