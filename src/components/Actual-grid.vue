@@ -33,7 +33,7 @@
     </div>
 
     <div class="coordinates">
-      <p>Actual Position: ({{ x }}, {{ y }})</p>
+      <p>ROVER Actual Position is ({{ x }}, {{ y }})</p>
     </div>
 
     <div class="controls">
