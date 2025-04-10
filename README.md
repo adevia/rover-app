@@ -5,7 +5,7 @@
 La aplicación "ROVER MISSION CONTROL" es una simulación interactiva que permite a los usuarios controlar un rover en un entorno de Marte representado en una cuadrícula. Los usuarios pueden establecer coordenadas iniciales y mover el rover en diferentes direcciones. La aplicación también detecta obstáculos en el camino del rover y notifica al usuario si el movimiento está bloqueado.
 
 # ALERTA: TOP SECRET
-Esta app es confindencial y por ello necesitarás las credenciales correctas para poderla visualizar. Si estás leyecdo esto es porque has sido elegido como sujeto de prueba para llevar a cabo una exploración en marte. 
+Esta app es confindencial y por ello necesitarás las credenciales correctas para poderla visualizar. Si estás leyendo esto es porque has sido elegido como sujeto de prueba para llevar a cabo una exploración en marte. 
 Las credenciales de acceso creadas para tu usuario son las siguientes: 
 
 Credential: housfy
@@ -15,20 +15,16 @@ Password: frontend
 Explorar un cuadrante desconocido del territorio Marte.
 
 ## Funcionalidades
-- **Control del Rover**: El usuario puede mover el rover en cuatro direcciones (norte, este, sur y oeste).
+- **Control del Rover**: Puedes mover el rover en cuatro direcciones (norte, este, sur y oeste).
 - **Detección de Obstáculos**: De manera predeterminada la app incluye seis(6) obstaculos distribuidos en el tablero  y el rover notificará al usuario si intenta moverse a una posición ocupada, en las siguientes posiciones:
-
 { x: 10, y: 4}
 { x: 20, y: 20}
 { x: 34, y: 6}
 { x: 50, y: 20}
 { x: 60, y: 16}
 { x: 80, y: 2}
-
-Pero se proyecta añadir nuevos obstáculos en la cuadrícula en una nueva versión de la app, para que se generen de manera dinámica.
 - **Visualización de Obstáculos**: Los obstáculos se muestran en la cuadrícula y están inicialmente ocultos. Se vuelven visibles cuando el rover intenta entrar en su posición.
 - **Coordenadas del Rover**: Se visualizan las coordenadas actuales del rover, junto con un mensaje informativo en caso de detectar un obstáculo.
-
 
 ## Pasos de Instalación
 Para ejecutar la aplicación en tu máquina local, sigue estos pasos:
@@ -74,8 +70,11 @@ Si el ROVER se encuentra en su recorrido con un obstaculo:
 - Se notificará por medio de un mensaje la aparición del obstáculo con sus coordenadas. Estás aparecerán también junto a las coordenadas actuales del ROVER, en la parte inferior de la cuadricula.
 - Los obstáculos encontrados se marcarán con un circulo rojo y quedarán activos hasta reiniciar la app. 
 
-Nota: Se planea para futuros desarrollos, generar un documento con las coordenadas exactas de los obstáculos y una representación del mapa. Además se ha dejado creada la posibilidad de establecer un punto de llegada, que en la siguiente versión, servirá como punto final para generar los informes de la exploración.  
+### CONSIDERACIONES
+- Se planea para futuros desarrollos, generar un documento con las coordenadas exactas de los obstáculos y una representación del mapa. 
+- Además se ha dejado creada la posibilidad de establecer un punto de llegada, que en la siguiente versión, servirá como punto final para generar los informes de la exploración.  
+- Se proyecta añadir nuevos obstáculos en la cuadrícula en una nueva versión de la app, para que se generen de manera dinámica.
 
-### Disfruta de tu misión de exploración en Marte, no te preocupes por perder el ROVER. Siempre sabras dónde está y podrás recuperarlo facilmente. 
+#### Disfruta de tu misión de exploración en Marte, no te preocupes por perder el ROVER. Siempre sabras dónde está y podrás recuperarlo facilmente. 
 
 Andrés Devia Torres
