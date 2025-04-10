@@ -59,8 +59,8 @@ export default {
   },
   data() {
   return {
-    x: 50,
-    y: 17,
+    x: 42,
+    y: 12,
     direction: 0,
     imageVisible: false,
     imagePosition: { x: 0, y: 0 },
@@ -68,11 +68,11 @@ export default {
 },
   methods: {
     setInitialPosition(coords) {
-      if (coords.x >= 0 && coords.x <= 99 && coords.y >= 0 && coords.y <= 34) {
+      if (coords.x >= 0 && coords.x <= 84 && coords.y >= 0 && coords.y <= 24) {
         this.x = coords.x;
         this.y = coords.y;
       } else {
-        alert("Por favor, introduce coordenadas válidas dentro del rango X (0-99) / y (0-34).");
+        alert("Por favor, introduce coordenadas válidas dentro del rango X (0-84) / y (0-24).");
       }
     },
     
@@ -98,10 +98,10 @@ export default {
           if (this.y > 0) this.y--; // Mover hacia arriba
           break;
         case 1: // Este
-          if (this.x < 99) this.x++; // Mover hacia la derecha
+          if (this.x < 84) this.x++; // Mover hacia la derecha
           break;
         case 2: // Sur
-          if (this.y < 34) this.y++; // Mover hacia abajo
+          if (this.y < 24) this.y++; // Mover hacia abajo
           break;
         case 3: // Oeste
           if (this.x > 0) this.x--; // Mover hacia la izquierda
@@ -143,8 +143,7 @@ export default {
 
 .grid {
   position: relative;
-  width: 100%;
-  height: 90%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: repeat(20, 1fr);

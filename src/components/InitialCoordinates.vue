@@ -1,20 +1,20 @@
 <template>
     <div class="initial-coordinates">
-        <label>Introduce Coordinates of the ROVER initial point X(0-99) / Y(0-34) </label>
-        <label for="startX">Start point in X (0-99):</label>
+        <label>Introduce Coordinates of the ROVER initial point X(0-84) / Y(0-24) </label>
+        <label for="startX">Start point in X (0-84):</label>
         <input
             type="number"
             id="startX"
             v-model.number="startX"
-            :max="99"
+            :max="84"
             :min="0"
         />
-        <label for="startY">Start point in Y (0-34):</label>
+        <label for="startY">Start point in Y (0-24):</label>
         <input
             type="number"
             id="startY"
             v-model.number="startY"
-            :max="35"
+            :max="24"
             :min="0"
         />
         <button @click="setInitialPosition">Set ROVER initial point</button>
@@ -25,8 +25,8 @@
   export default {
     data() {
       return {
-        startX: 50,
-        startY: 17,
+        startX: 42,
+        startY: 12,
       };
     },
     methods: {
