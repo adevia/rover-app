@@ -1,8 +1,8 @@
 <template>
     <div class="command-input">
-      <label for="commands">Introduce comandos (ej. FFRRFFFRL):</label>
+      <label for="commands">Introduce commands / Example: FFRRFFFRL</label>
       <input type="text" id="commands" v-model="commands" />
-      <button @click="executeCommands">Ejecutar Comandos</button>
+      <button @click="executeCommands">GO</button>
     </div>
   </template>
   
