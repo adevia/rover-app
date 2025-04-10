@@ -46,6 +46,9 @@
 
     <div class="coordinates">
       <p><mark>ROVER Actual Position is ({{ x }}, {{ y }})</mark></p>
+      <span v-if="discoveredObstacle" style="color: red;">
+        (Obstacle detected in: ({{ discoveredObstacle.x }}, {{ discoveredObstacle.y }}))
+      </span>
     </div>
 
     <div class="controls">
@@ -84,6 +87,7 @@ export default {
       { x: 60, y: 16, visible: false },
       { x: 80, y: 2, visible: false },
     ],
+    discoveredObstacle: null,
   };
 },
   methods: {
@@ -92,7 +96,7 @@ export default {
         this.x = coords.x;
         this.y = coords.y;
       } else {
-        alert("Por favor, introduce coordenadas válidas dentro del rango X (0-84) / y (0-24).");
+        alert("Please set coordinatesbetween X (0-84) / y (0-24)");
       }
     },
     
@@ -113,38 +117,43 @@ export default {
     },
 
     moveForward() {
-      let newX = this.x;
-      let newY = this.y;
+    let newX = this.x;
+    let newY = this.y;
 
-      switch (this.direction) {
-        case 0: // Norte
-          newY--; 
-          break;
-        case 1: // Este
-          newX++; 
-          break;
-        case 2: // Sur
-          newY++; 
-          break;
-        case 3: // Oeste
-          newX--; 
-          break;
-      }
+    const lastPosition = { x: this.x, y: this.y };
 
-      // Comprobar si la nueva posición está dentro de los límites
-      if (this.isInBounds(newX, newY)) {
+    switch (this.direction) {
+      case 0: // Norte
+        newY--; 
+        break;
+      case 1: // Este
+        newX++; 
+        break;
+      case 2: // Sur
+        newY++; 
+        break;
+      case 3: // Oeste
+        newX--; 
+        break;
+    }
+
+    if (this.isInBounds(newX, newY)) {
+      const obstacle = this.obstacles.find(o => o.x === newX && o.y === newY);
+      if (obstacle) {
+        obstacle.visible = true;
+        this.discoveredObstacle = obstacle;
+        alert(`Blocked step: obstacle detected in (${obstacle.x}, ${obstacle.y}).`);
+        this.x = lastPosition.x; 
+        this.y = lastPosition.y;
+      } else {
         this.x = newX;
         this.y = newY;
-
-        // Comprobar si hay un obstáculo en la nueva posición
-        const obstacle = this.obstacles.find(o => o.x === newX && o.y === newY);
-        if (obstacle) {
-          obstacle.visible = true; // Hacer visible el obstáculo
-        }
-      } else {
-        alert("Movimiento fuera de límites.");
+        this.discoveredObstacle = null;
       }
-    },
+    } else {
+      alert("Movement out of the limits for this mission, please get back around.");
+    }
+  },
 
     isInBounds(x, y) {
       return x >= 0 && x <= 84 && y >= 0 && y <= 24;
@@ -201,11 +210,11 @@ export default {
 }
 
 .obstacle {
-  width: 100px; 
-  height: 100px; 
-  background-color: red; /* Color para distinguir los obstáculos */
-  opacity: 0.7; /* Permitir ver el fondo ligeramente */
-  border-radius: 50%; /* Forma circular */
+  width: 50px; 
+  height: 50px; 
+  background-color: red;
+  opacity: 0.7;
+  border-radius: 50%;
 }
 
 .coordinates {
